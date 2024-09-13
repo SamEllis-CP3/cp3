@@ -20,6 +20,15 @@ elif play == 1:
     print("ok", name, "your gonna have to play this game till you beat it, break it, or die. \n Have fun")
 else:
     print("That wasnt one of the options")
+if name == "god" or name == "God":
+    print("You have max stats\n")
+    bow += 2000
+    arrow += 200
+    sword += 20000
+    heal += 2000
+    health += 2000
+    defense += 2000
+    gold += 2000
 
 
 area1 = 0
@@ -62,7 +71,7 @@ UD = 0
 ttl = 0
 mzl = True
 while mzl:
-    move = int(input("Left (1) Right (2) Up (3) down (4)\n*****************\n"))
+    move = int(input("\nLeft (1) Right (2) Up (3) down (4)\n"))
     if move == 1:
         LR += -1
         ttl += 1
@@ -80,7 +89,7 @@ while mzl:
     if UD == 3 and LR == -2:
         print("Youve finished the maze")
         mzl = False
-    if ttl == 35:
+    if ttl == 10:
         print("Youve finished the maze")
         mzl = False
 
@@ -355,7 +364,7 @@ def train_fight(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                 print("You look at the door, but it cant be opened without a key\n go back and find the person with the key.\n")
                 train_car1 += 3
             else:
-                print("You Have gone to far\n")
+                print("You Move forward\n")
                 train_car1 += -1
         elif tr1 == 2:
             print("You have", gold , "Gold, You have a bow that deals",bow,"damage\nYou have a sword that deals",sword,"damage\n You have", arrow, "arrows\n You have" ,heal,"healing potions\n You have", health,"HP\n You have", defense,"Defense")
@@ -391,7 +400,7 @@ def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                         else:
                             print("You walk away\n")
                     elif tr1p == 3:
-                        pas2 = int(input("Add later\n talk to them(1) Leave them alone(2)\n"))
+                        pas2 = int(input("You see a person with the top part of a pice of papper\n talk to them(1) Leave them alone(2)\n"))
                         if pas2 == 1:
                             print("They say \n'I found this pice of paper with the number 3 onit, it might be useful'")
                         elif pas2 == 2:
@@ -399,15 +408,15 @@ def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                         else:
                             print("You walk away\n")
                     elif tr1p == 2:
-                        pas3 = int(input("add later\n talk to them(1) Leave them alone(2)\n"))
+                        pas3 = int(input("You meet a man with orange hair\n talk to them(1) Leave them alone(2)\n"))
                         if pas3 == 1:
-                            print("They say \n'Im travling to the adoption center to drop of my kid'")
+                            print("They say \n'Im going to make this game great again'")
                         elif pas3 == 2:
                             print("You walk away from the People\n")
                         else:
                             print("You walk away\n")
                     elif tr1p == 1:
-                        pas4 = int(input("add later\n talk to them(1) Leave them alone(2)\n"))
+                        pas4 = int(input("You see a dog with a pice of papper\n talk to them(1) Leave them alone(2)\n"))
                         if pas4 == 1:
                             print("They say \n'i found this pice of paper with the number 9 on it, it might be useful'")
                         elif pas4 == 2:
@@ -428,25 +437,26 @@ def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                 if tr2c1 == 1:
                     tr2p += -1
                     if tr2p == 4:
-                        pas12 = int(input("add later\n talk to them(1) Leave them alone(2)\n"))
+                        pas12 = int(input("You see a kid playing with a toy\n Take the toy(1) Leave them alone(2)\n"))
                         if pas12 == 1:
-                            print("They say \n'Im travling to the adoption center to drop of my kid'")
+                            print("You try to take the toy \n'You get hit and lose 25 HP'")
+                            health += -25
                         elif pas12 == 2:
                             print("You walk away from the People\n")
                     elif tr2p == 3:
-                        pas22 = int(input("Add later\n talk to them(1) Leave them alone(2)\n"))
+                        pas22 = int(input("You see a bald man with a pice of paper\n talk to them(1) Leave them alone(2)\n"))
                         if pas22 == 1:
                             print("They say \n'i found this pice of paper with the number 4 on it, it might be useful'")
                         elif pas22 == 2:
                             print("You walk away from the People\n")
                     elif tr2p == 2:
-                        pas32 = int(input("add later\n talk to them(1) Leave them alone(2)\n"))
+                        pas32 = int(input("You see a ginger with a computer\n talk to them(1) Leave them alone(2)\n"))
                         if pas3 == 1:
-                            print("They say \n'Im travling to the adoption center to drop of my kid'")
+                            print("They say \n'Im making this lame game right now, and its messed up but I wont tell you that'")
                         elif pas32 == 2:
                             print("You walk away from the People\n")
                     elif tr2p == 1:
-                        pas42 = int(input("There is a old lady sitting with a strange box\n talk to them(1) Leave them alone(2)\n"))
+                        pas42 = int(input("There is a old lady sitting with a strange pice of paper\n talk to them(1) Leave them alone(2)\n"))
                         
                         if pas42 == 1:
                             print("They say \n'I found this pice of paper with the number 2 on it, I think its important'")
@@ -523,7 +533,7 @@ def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                 print("You look at the door, but it cant be opened without a key\n go back and find the person with the key.\n")
                 train_car1 += 3
             else:
-                print("You Have gone to far\n")
+                print("You found a pice of paper with a code on it\n It says '3942' \n")
                 train_car1 += -1
         elif tr1 == 2:
             print("You have", gold , "Gold, You have a bow that deals",bow,"damage\nYou have a sword that deals",sword,"damage\n You have", arrow, "arrows\n You have" ,heal,"healing potions\n You have", health,"HP\n You have", defense,"Defense")
@@ -548,8 +558,17 @@ oldmans(True,True)
 train_fight2(True,True,500,3,3,2,3,0,0)
 final = True
 fnhp = 1000
-fndmg = random.randint(5,20)
+five = 5
+twen = 20
+fndmg = random.randint(five,twen)
 while final:
+    if name == "god" or name == "God":
+        fnhp += 999999
+        five += 95
+        twen += 180
+        
+    else:
+        sword += 3
     oldmans(True,True)
     fn1 = int(input("Do you want to Go to the final Train\n Yes(1) No(2)\n"))
     if fn1 == 1:
@@ -565,13 +584,15 @@ while final:
                 break
             elif health < 0:
                 print("You lost, good game")
+                done1 = 1
+                final = False
                 break
             else:
                 a1 = int(input("Pick your move\n Sword(1) Bow(2) Heal(3) Run(4)"))
                 if a1 == 1:
                     fnhp += -sword
                     print("You dealt", sword,"To the boss\n The boss has", fnhp,"Left\n")
-                    fndmg = random.randint(5,20)
+                    fndmg = random.randint(five,twen)
                     health += -fndmg
                     print("The boss dealt", fndmg,"you have",health,"left\n")
 
@@ -601,7 +622,7 @@ while final:
                     final = False
                 else:
                     print("Thats not a option\n The boss still attacks you")
-                    fndmg = random.randint(5,20)
+                    fndmg = random.randint(five,twen)
                     health += -fndmg
                     print("The boss dealt", fndmg,"you have",health,"left\n")
 
