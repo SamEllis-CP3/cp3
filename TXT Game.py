@@ -154,7 +154,7 @@ while keycard > 1:
     elif old == 2:
         print("You have", gold , "Gold, You have a bow that deals",bow,"damage\nYou have a sword that deals",sword,"damage\n You have", arrow, "arrows\n You have" ,heal,"healing potions\n You have", health,"HP\n You have", defense,"Defense")
     elif old == 3:
-        keycard += 2
+        keycard += 1
         print("You have travled back through the forest.\n")
     else:
         print("Not a option")
@@ -218,7 +218,7 @@ def train_fight(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
         
             
             
-            if train_car1 == 2:
+            while train_car1 == 2:
                 tr1 = int(input("Would you like to move forward (1)\n Or check stats (2)\n Or Move back (3)\n***********\n"))
                 tr1c1 = tr1
                 if tr1c1 == 1:
@@ -263,7 +263,7 @@ def train_fight(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                     print("You have", gold , "Gold, You have a bow that deals",bow,"damage\nYou have a sword that deals",sword,"damage\n You have", arrow, "arrows\n You have" ,heal,"healing potions\n You have", health,"HP\n You have", defense,"Defense")
                 elif tr1c1 == 3:
                     tr1p += 2
-            elif train_car1 == 1:
+            while train_car1 == 1:
                 tr2c1 = tr1
                 if tr2c1 == 1:
                     tr2p += -1
@@ -306,7 +306,7 @@ def train_fight(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                     else:
                         print("Thats not a option")
                             
-            elif train_car1 < 0 and pers == 1:
+            if train_car1 < 0 and pers == 1:
                 boss1 = True
                 print("You walk into the Room\n the conductor is waiting for you\n He says that the engine is acting up and there is something we need to help him fix\n")
                 print("You walk down the stairs and see a monstor made of coal")
@@ -374,7 +374,7 @@ def train_fight(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
         else:
             print("Not a option")
 
-def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
+def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1,code1):
     global gold
     global heal
     global arrow
@@ -533,7 +533,13 @@ def train_fight2(train_1,boss1,boss1hp,train_car1,tr1p,tr2p,tr3p,pers,done1):
                 print("You look at the door, but it cant be opened without a key\n go back and find the person with the key.\n")
                 train_car1 += 3
             else:
-                print("You found a pice of paper with a code on it\n It says '3942' \n")
+                if code1 == 2:
+                    print("You found a pice of paper with half a code on it:\n '39'")
+                    code1 += -1
+                elif code1 == 1:
+                    print("You found a pice of paper with the second half the code on it:\n '42'")
+                else: 
+                    print("The whole code is '3942\n")
                 train_car1 += -1
         elif tr1 == 2:
             print("You have", gold , "Gold, You have a bow that deals",bow,"damage\nYou have a sword that deals",sword,"damage\n You have", arrow, "arrows\n You have" ,heal,"healing potions\n You have", health,"HP\n You have", defense,"Defense")
@@ -555,7 +561,7 @@ tr3p = 3
 pers = 0
 done1 = 0
 oldmans(True,True)
-train_fight2(True,True,500,3,3,2,3,0,0)
+train_fight2(True,True,500,3,3,2,3,0,0,2)
 final = True
 fnhp = 1000
 five = 5
