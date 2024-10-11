@@ -14,27 +14,83 @@ class Order:
         
     @staticmethod
     def orderdone():
+        
+        sp = ":"
         finalorder = []
-        total = 0
-        while True:
-            drinkch = input(f"What drink would you like{drinklst}\n:")
-            if drinkch == "water" or drinkch == "Water":
-                total += 0
-                print(f"You order {drinkch}")
-                finalorder.append
-            elif drinkch == "Orange Juice" or drinkch == "orange juice":
-                total += 1.50
-                print(f"You order {drinkch}")
-            elif drinkch == "Apple Juice" or drinkch == "apple juice":
-                total += 1.50
-                print(f"You order {drinkch}")
-            elif drinkch == "Coffe" or drinkch == "coffe":
-                total += 3.00
-                print(f"You order {drinkch}")
-            else:
-                print("Are You sure you would not like a drink?")
-                drinktof = input(":")
-                if drinktof == "yes" or drinktof == "Yes":
+        total = 0.00
+        drinkT = True
+        print("Would you like to order a drink?")
+        drinktof = lower.(input(":"))
+        if drinktof == "yes":
+            while drinkT:
+            
+                drinkch = lower.(input(f"What drink would you like{drinklst}\n:"))
+                if drinkch == "water":
+                    total += 0
+                    print(f"You order {drinkch}")
+                    finalorder.append(drinkch)
+                    wld = input('Would you like to order another drink?\n:')
+                    if wld == "no" or wld == "No":
+                        drinkT = False
+                    elif wld == "Yes" or wld == "yes":
+                        print("\n")
+
+                elif drinkch == "orange juice":
+                    total += 1.50
+                    print(f"You order {drinkch}")
+                    finalorder.append(drinkch)
+                    wld = lower.(input('Would you like to order another drink?\n:'))
+                    if wld == "no":
+                        drinkT = False
+                    elif wld == "yes":
+                        print("\n")
+
+                elif drinkch == "apple juice":
+                    total += 1.50
+                    print(f"You order {drinkch}")
+                    finalorder.append(drinkch)
+                    wld = lower.(input('Would you like to order another drink?\n:'))
+                    if wld == "no":
+                        drinkT = False
+                    elif wld == "yes":
+                        print("\n")
+
+                elif drinkch == "coffe":
+                    total += 3.00
+                    print(f"You order {drinkch}")
+                    finalorder.append(drinkch)
+                    wld = lower.(input('Would you like to order another drink?\n:'))
+                    if wld == "no":
+                        drinkT = False
+                    elif wld == "yes":
+                        print("\n")
+
+                elif drinkch == "nothing":
+                    
+                    wld = lower.(input('Would you like to order another drink?\n:'))
+                    if wld == "no":
+                        drinkT = False
+                    elif wld == "yes":
+                        print("\n")
+
+                else:
+                    print("That is not on the menu")
+            
+        elif drinktof == "no":
+            print("\n")
+
+
+        specialins = input("Do you have any Special instuctions for your drink\n")   
+        if specialins  == "Yes" or specialins == "yes":
+            specinst = input("What would you like to be done with your drink?")
+            sp = sp + specinst
+        elif specialins  == "No" or specialins == "no":
+            print("\n")
+            
+
+        print(f"Your total is ${total}\nYour order is{finalorder}")
+        print(sp)
+        
         
 
 
