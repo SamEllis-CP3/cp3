@@ -20,12 +20,12 @@ class Order:
         total = 0.00
         drinkT = True
         print("Would you like to order a drink?")
-        drinktof = lower.(input(":"))
-        if drinktof == "yes":
+        drinktof = input(":")
+        if lower(drinktof) == "yes":
             while drinkT:
             
-                drinkch = lower.(input(f"What drink would you like{drinklst}\n:"))
-                if drinkch == "water":
+                drinkch = input(f"What drink would you like{drinklst}\n:")
+                if lower(drinkch) == "water":
                     total += 0
                     print(f"You order {drinkch}")
                     finalorder.append(drinkch)
@@ -39,8 +39,8 @@ class Order:
                     total += 1.50
                     print(f"You order {drinkch}")
                     finalorder.append(drinkch)
-                    wld = lower.(input('Would you like to order another drink?\n:'))
-                    if wld == "no":
+                    wld = input('Would you like to order another drink?\n:')
+                    if lower(wld) == "no":
                         drinkT = False
                     elif wld == "yes":
                         print("\n")
@@ -49,8 +49,8 @@ class Order:
                     total += 1.50
                     print(f"You order {drinkch}")
                     finalorder.append(drinkch)
-                    wld = lower.(input('Would you like to order another drink?\n:'))
-                    if wld == "no":
+                    wld = input('Would you like to order another drink?\n:')
+                    if lower(wld) == "no":
                         drinkT = False
                     elif wld == "yes":
                         print("\n")
@@ -59,16 +59,16 @@ class Order:
                     total += 3.00
                     print(f"You order {drinkch}")
                     finalorder.append(drinkch)
-                    wld = lower.(input('Would you like to order another drink?\n:'))
-                    if wld == "no":
+                    wld = input('Would you like to order another drink?\n:')
+                    if lower(wld) == "no":
                         drinkT = False
                     elif wld == "yes":
                         print("\n")
 
                 elif drinkch == "nothing":
                     
-                    wld = lower.(input('Would you like to order another drink?\n:'))
-                    if wld == "no":
+                    wld = (input('Would you like to order another drink?\n:'))
+                    if lower(wld) == "no":
                         drinkT = False
                     elif wld == "yes":
                         print("\n")
