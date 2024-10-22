@@ -68,6 +68,9 @@ class Mammal(Animal):
     pass
 
 class Cat(Mammal):
+    def __init__(self, name, diet):
+        super().__init__(name)
+        self.diet = diet
     diet = "mice"
 
 class Dog(Mammal):
@@ -82,7 +85,7 @@ class Snake(Reptile):
 class Turtle(Reptile):
     diet = "carrots"
 
-class Bird():
+class Bird(Animal):
     pass
 
 class Pigeon(Bird):
@@ -91,14 +94,14 @@ class Tucan(Bird):
     diet = "fuit loops"
 
 
-class Amphibians():
+class Amphibians(Animal):
     pass
 class Frog(Amphibians):
     diet = "flies"
 class Newt(Amphibians):
     diet = "worms"
 
-class Fish():
+class Fish(Animal):
     pass
 class Koi(Fish):
     diet = "algae"
@@ -108,10 +111,11 @@ class Guppy(Fish):
 store = PetStore(1)
 store.add_pet(Turtle("Shelly"))
 store.add_pet(Cat("Joe"))
-store.add_pet(Turtle("Flash"))
-store.add_pet(Bird("Robin"))
+store.add_pet(Pigeon("Boston"))
+store.add_pet(Tucan("Robin"))
+store.add_pet(Koi("Fish"))
 
-store.feature("Flash")
+store.feature("Fish")
 store.feed()
 
 print("\nReptiles: ")
