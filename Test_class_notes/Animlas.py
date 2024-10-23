@@ -23,6 +23,8 @@ class animal:
     #Makes a more readable string when printed
     def __str__(self):
         return f"Name: {self.name}\nAge: {self.age}\nSpecies: {self.species}\nGender: {self.gender}\nRarity: {self.rarity}\n"
+    def get_name(self):
+        return self.name
     
 #We generaly store objects in variables (individually or in a list) so we can use it!
 cat = animal("Tom", "cat", 21, "Male", "Common")

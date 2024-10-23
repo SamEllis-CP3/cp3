@@ -1,8 +1,8 @@
 class Order:
-    def __init__(self, name):
+    def __init__(self):
         self.total = 0.0
         self.finalorder = []
-        self.name = name
+        
 
     
 
@@ -10,9 +10,9 @@ class Order:
         
         
     def DrinkOrder(self):
-        
+        D_Choice = input(f"What would you like to order?\n{drinklst}\n:")
         while True:
-            D_Choice = input(f"What would you like to order?\n{drinklst}\n:")
+            
             
             if D_Choice.lower == "water":
                 self.finalorder.append("Water")
@@ -56,6 +56,9 @@ class Order:
                     pass
                 elif more.lower == "no":
                     break
+            else:
+                print('Ok')
+                break
         print(self.finalorder)
         print(self.total)
         
@@ -70,4 +73,4 @@ sidelst = ["Potato Skins: $3.50", "Mashed potatos: $3.50","Fries: $3.50"]
 desslst = ["Choco Cake: $5.00", "Lava Cake: $5.00", "Choco Icecream: $3.50"]
 menu = (f"\nDrinks {drinklst}\nAppetizers {applst}\nSides {sidelst}\n Desserts {desslst}")
 
-Order.DrinkOrder("jim")
+Order.DrinkOrder()
