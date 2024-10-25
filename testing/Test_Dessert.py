@@ -75,6 +75,3 @@ def test_sundae():
     assert test_sun3.get_name() == "Pecan"
     assert test_sun3.get_topping() == "Nuts"
     assert test_sun3.get_topping_price() == 0.50
-
-    
-
