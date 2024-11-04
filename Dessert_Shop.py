@@ -66,7 +66,8 @@ class Order:
         
 
     def __len__(self):
-        return len(self.order)
+        size = len(self.order)
+        return size
 
 def main():
     Order_1 = Order()
@@ -78,10 +79,9 @@ def main():
     Order_1.add(Sundae("Vanilla", 3, .69, "Hot Fudge", 1.29))
     Order_1.add(Cookie("Oatmeal Raisin", 2, 3.45))
 
-    
-    print(Order_1)
-    print(len(Order_1))
-    
+    for item in Order_1.order:
+        print(item)
+    print(f"Total number of items in order: {len(Order_1)}")
     
     
 
