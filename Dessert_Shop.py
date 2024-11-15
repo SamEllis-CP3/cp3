@@ -106,6 +106,9 @@ class Order:
             base_cost = item.calc_cost() / (1 + item.tax_percent / 100)
             total_tax += item.calc_cost() - base_cost
         return total_tax
+    
+list_items = []
+
 def main():
     Order_1 = Order()
     
@@ -118,11 +121,13 @@ def main():
 
     for item in Order_1.order:
         print(f"{item.get_name()} - ${item.calc_cost():.2f}")
+        list_items.append(f"{item.get_name()} - ${item.calc_cost():.2f}")
 
     print(f"Total number of items in order: {len(Order_1)}")
     
     print(f"Total cost of the order: ${Order_1.order_cost():.2f}")
     print(f"Total tax applied: ${Order_1.order_tax():.2f}")
+    
     
 
 main()
