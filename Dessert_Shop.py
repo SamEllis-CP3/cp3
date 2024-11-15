@@ -1,15 +1,21 @@
 from abc import ABC, abstractmethod
 
+
+
 class DessertItem(ABC):
     def __init__(self, name):
         self.name = name
         self.tax_percent = 7.25
+
     def get_name(self):
         return self.name
     
     @abstractmethod
     def calc_cost(self):
         pass
+
+    def calculate_tax(self) -> float:
+        return self.calc_cost() * (self.tax_percent / 100)
         
     
     
@@ -26,9 +32,7 @@ class Candy(DessertItem):
         return self.candy_weight
     
     def calc_cost(self):
-        base_cost = self.candy_weight * self.price_per_pound
-        total_cost = base_cost * (1 + base_cost * self.tax_percent)
-        return total_cost
+        return self.candy_weight * self.price_per_pound
 
 class Cookie(DessertItem):
     def __init__(self, name, quantity, price_per_dozen):
@@ -43,9 +47,7 @@ class Cookie(DessertItem):
         return self.quantity
     
     def calc_cost(self):
-        base_cost = (self.quantity / 12) * (self.price_per_dozen)
-        total_cost = base_cost * (1 + base_cost * self.tax_percent)
-        return total_cost
+        return (self.quantity / 12) * (self.price_per_dozen)
     
     
 class IceCream(DessertItem):
@@ -61,9 +63,7 @@ class IceCream(DessertItem):
         return self.price_per_scoop
     
     def calc_cost(self):
-        base_cost = self.price_per_scoop * self.scoop_count
-        total_cost = base_cost * (1 + base_cost * self.tax_percent)
-        return total_cost
+        return self.price_per_scoop * self.scoop_count
 
 class Sundae(IceCream):
     def __init__(self, name, scoop_count, price_per_scoop, topping_name, topping_price):
@@ -78,10 +78,8 @@ class Sundae(IceCream):
         return self.topping_price
     
     def calc_cost(self):
-        ice_cream_cost = self.scoop_count * self.price_per_scoop
-        total_cost = ice_cream_cost + self.topping_price
-        total_cost_with_tax = total_cost * (1 + total_cost * self.tax_percent / 100)
-        return total_cost_with_tax
+        return super().calc_cost() + self.topping_price
+    
 
 class Order:
     def __init__(self):
@@ -97,17 +95,21 @@ class Order:
         size = len(self.order)
         return size
     
-    def order_cost(self):
+    def order_cost(self) -> float:
         return sum(item.calc_cost() for item in self.order)
     
-    def order_tax(self):
-        total_tax = 0
-        for item in self.order:
-            base_cost = item.calc_cost() / (1 + item.tax_percent / 100)
-            total_tax += item.calc_cost() - base_cost
-        return total_tax
+    def order_tax(self) -> float:
+        return sum(item.calculate_tax() for item in self.order)
     
-list_items = []
+    def get_order_data(self) -> float:
+        data = []
+        for item in self.order:
+            item_cost = item.calc_cost()
+            tax_amount = item.calculate_tax()
+            data.append([item.get_name(), f"${item_cost: .2f}", f"${tax_amount: .2f}"])
+        return data
+    
+
 
 def main():
     Order_1 = Order()
@@ -121,79 +123,22 @@ def main():
 
     for item in Order_1.order:
         print(f"{item.get_name()} - ${item.calc_cost():.2f}")
-        list_items.append(f"{item.get_name()} - ${item.calc_cost():.2f}")
+        
 
     print(f"Total number of items in order: {len(Order_1)}")
     
     print(f"Total cost of the order: ${Order_1.order_cost():.2f}")
     print(f"Total tax applied: ${Order_1.order_tax():.2f}")
-    
-    
 
-main()
+    order_data = Order_1.get_order_data()
+    subtotal = Order_1.order_cost()
+    total_tax = Order_1.order_tax()
 
+    order_data.append(["Subtotal" , f"${subtotal: .2f}", f"${total_tax: .2f}"])
+    order_data.append(["Total", f"${subtotal + total_tax: .2f}", "" ])
+    order_data.append(["Total Items", str(len(Order_1)), ""])
 
+    make_receipt(order_data, "receipt.pdf")
 
-
-
-
-
-
-# imports module 
-from reportlab.platypus import SimpleDocTemplate, Table, Paragraph, TableStyle 
-from reportlab.lib import colors 
-from reportlab.lib.pagesizes import A4 
-from reportlab.lib.styles import getSampleStyleSheet 
-  
-# data which we are going to display as tables 
-DATA = [ 
-    [ "Date" , "Name", "Subscription", "Price (Rs.)" ], 
-    [ 
-        "16/11/2020", 
-        "Full Stack Development with React & Node JS - Live", 
-        "Lifetime", 
-        "10,999.00/-", 
-    ], 
-    [ "16/11/2020", "Geeks Classes: Live Session", "6 months", "9,999.00/-"], 
-    [ "Sub Total", "", "", "20,9998.00/-"], 
-    [ "Discount", "", "", "-3,000.00/-"], 
-    [ "Total", "", "", "17,998.00/-"], 
-] 
-  
-# creating a Base Document Template of page size A4 
-pdf = SimpleDocTemplate( "receipt.pdf" , pagesize = A4 ) 
-  
-# standard stylesheet defined within reportlab itself 
-styles = getSampleStyleSheet() 
-  
-# fetching the style of Top level heading (Heading1) 
-title_style = styles[ "Heading1" ] 
-  
-# 0: left, 1: center, 2: right 
-title_style.alignment = 1
-  
-# creating the paragraph with  
-# the heading text and passing the styles of it 
-title = Paragraph( "GeeksforGeeks" , title_style ) 
-  
-# creates a Table Style object and in it, 
-# defines the styles row wise 
-# the tuples which look like coordinates  
-# are nothing but rows and columns 
-style = TableStyle( 
-    [ 
-        ( "BOX" , ( 0, 0 ), ( -1, -1 ), 1 , colors.black ), 
-        ( "GRID" , ( 0, 0 ), ( 4 , 4 ), 1 , colors.black ), 
-        ( "BACKGROUND" , ( 0, 0 ), ( 3, 0 ), colors.gray ), 
-        ( "TEXTCOLOR" , ( 0, 0 ), ( -1, 0 ), colors.whitesmoke ), 
-        ( "ALIGN" , ( 0, 0 ), ( -1, -1 ), "CENTER" ), 
-        ( "BACKGROUND" , ( 0 , 1 ) , ( -1 , -1 ), colors.beige ), 
-    ] 
-) 
-  
-# creates a table object and passes the style to it 
-table = Table( DATA , style = style ) 
-  
-# final step which builds the 
-# actual pdf putting together all the elements 
-pdf.build([ title , table ]) 
+if __name__ == "__main__":
+    main()
