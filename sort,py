@@ -1,0 +1,28 @@
+from operator import attrgetter
+li = (99,1,8,7,3,6,4,5)
+
+
+slist = sorted(li)
+#print(slist)
+
+class Employee():
+    def __init__(self,name, age, salary):
+        self.name = name
+        self.age = age
+        self.salary = salary
+    
+    def __repr__(self):
+        return '({}, {}, ${})'.format(self.name, self.age, self.salary)
+    
+e1 = Employee("Carl", 37, 70000)
+e2 = Employee("sarah", 29, 80000)
+e3 = Employee("John", 43, 90000)
+e4 = Employee("Sam Rico", 7, 100000000000)
+employees = [e1,e2,e3, e4]
+
+def e_sort(emp):
+    return emp.salary
+
+s_employees = sorted(employees, key= attrgetter('salary'), reverse= True)
+
+print(s_employees)

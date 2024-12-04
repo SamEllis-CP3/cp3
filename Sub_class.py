@@ -64,6 +64,9 @@ class Animal:
     def eat(self):
         print(f"{self.name} eating {self.diet}")
 
+    def __lt__(self, other):
+        return (self.name < other.name)
+
 class Mammal(Animal):
     pass
 
@@ -72,6 +75,8 @@ class Cat(Mammal):
         super().__init__(name)
         self.diet = diet
     diet = "mice"
+
+    
 
 class Dog(Mammal):
     diet = "kibble"
@@ -108,9 +113,15 @@ class Koi(Fish):
 class Guppy(Fish):
     diet = "flakes"
 
+shelly = Turtle("Shelly")
+shelly.food = "Lettuce"
 store = PetStore(1)
+flash = Turtle("Flash")
+robin = Snake("Robin")
+pets = [shelly, flash, robin]
+store.add_pet(shelly)
 store.add_pet(Turtle("Shelly"))
-store.add_pet(Cat("Joe"))
+store.add_pet(Cat("Joe", "pizza"))
 store.add_pet(Pigeon("Boston"))
 store.add_pet(Tucan("Robin"))
 store.add_pet(Koi("Fish"))
@@ -118,7 +129,16 @@ store.add_pet(Koi("Fish"))
 store.feature("Fish")
 store.feed()
 
-print("\nReptiles: ")
-for pet in store.get_reptiles():
+#print("\nReptiles: ")
+#for pet in store.get_reptiles():
+    #print(pet)
+
+#print(shelly.__dict__)
+pets.sort()
+
+for pet in pets:
     print(pet)
 
+print(id(shelly)) 
+print(id(flash)) 
+print(id(robin)) 
