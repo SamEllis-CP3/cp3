@@ -1,0 +1,98 @@
+"""
+BoxLayout:
+    #tells wich way the box can be
+    orientation: 'vertical'
+
+    #used to despialy text on a screen
+    Label:
+        text: 'Enter your name:'
+        font_size: 24
+        
+        #Changes font size
+
+    TextInput:
+        id: user_input
+        #when they click on the box this hint will disapear
+        hint_text: 'Tell me your name'
+        multiline: False
+
+    Button:
+        #coustmize the output from the button press, and changes the label below
+        text: 'Greet'
+        on_press: output_label.text = 'Aloha ' + user_input.text
+
+    Label: 
+        id: output_label
+        text: 'Welcome!' 
+
+    CheckBox:
+        id: check_box
+        active: True
+    Label:
+        text: 'Check me'
+
+    Slider:
+    #makes a slider to choose numbers
+        min: 0
+        max: 100
+        value: 50
+
+    Switch:
+        id: Switch
+    Label:
+        text: "Toggle me"
+
+    ProgressBar:
+        max: 100
+        value: 75
+    
+    Image:
+        source ''    
+        allow_stretch: True
+        keep_ration: True
+"""
+"""
+GridLayout:
+    cols: 3 
+
+    Button:
+    text: '1'
+    Button:
+    text: '2'
+    Button:
+    text: '3'
+    Button:
+    text: '4'
+    Button:
+    text: '5'
+    Button:
+    text: '6'
+    Button:
+    text: '7'
+    Button:
+    text: '8'
+    Button:
+    text: '9'
+    Button:
+    text: '0'
+"""
+
+"""
+FloatLayout:
+    Button:
+        text: "Top Left"
+        size_hint: 0.2,0.1
+        pos_hint: {'x': 0.4, 'y': 0.45}
+"""
+
+ScreenManager:
+    id: screen_manager
+    transition: NoTransition()
+
+
+    Screen:
+        name:'Home_screen'
+
+        Button:
+            text: 'Go to settings'
+            on_press: screen_manager.current = 'settings_screen'
